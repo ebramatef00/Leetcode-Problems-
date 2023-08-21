@@ -1,0 +1,35 @@
+#include <unordered_set>
+#include <vector>
+
+class Solution {
+public:
+    bool containsDuplicate(std::vector<int>& nums) {
+        std::unordered_set<int> hashset;
+
+        for (int n : nums) {
+            if (hashset.find(n) != hashset.end()) {
+                return true;
+            }
+            hashset.insert(n);
+        }
+        return false;
+    }
+};
+
+
+
+//another sol but time exceed o(n^2)
+class Solution {
+public:
+  
+    bool containsDuplicate(vector<int>& nums) {
+        for (int i = 0; i < nums.size(); i++) {
+           for(int j=i+1;j<nums.size();j++)
+           {
+               if(nums[i]==nums[j])
+               return true;
+           }
+        }
+        return false;
+    }
+};
